@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5a8376facf34b47a9cb4e2c38ec6ea, type: 3}
+  m_Name: Heal
+  m_EditorClassIdentifier: 
+  skillName: Heal
+  skillID: 3
+  icone: {fileID: 21300000, guid: 05709bd72d9966d47ae9d9d0eba7c6f1, type: 3}
+  cooldown: 5
+  timePassed: 2.2198648
+  onCooldown: 0
+  manaCost: 25
+  damage: 0
+  heal: 20

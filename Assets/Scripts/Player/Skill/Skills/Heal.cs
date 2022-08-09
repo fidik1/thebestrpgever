@@ -18,7 +18,7 @@ public class Heal : Skill
     {
         if (cast)
         {
-            player.GetComponent<PlayerController>().hp += attribute.heal;
+            player.GetComponent<Player>().hp += attribute.heal;
             cast = false;
         }
     }

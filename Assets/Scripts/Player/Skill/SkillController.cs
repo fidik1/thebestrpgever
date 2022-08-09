@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillController : MonoBehaviour
 {
-    public PlayerController player;
+    public Player player;
     public List<Skill> skills;
     [SerializeField] int skillID = 0;
 

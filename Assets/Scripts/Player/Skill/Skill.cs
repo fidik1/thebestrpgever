@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Skill : MonoBehaviour
 {
     public virtual AttributeSkill attribute { get; set; }
-    public PlayerController player;
+    public Player player;
     public Vector3 rayStartPos = new Vector3(Screen.width/2, Screen.height/2, 0);
 
     void Start()
@@ -19,7 +19,6 @@ public abstract class Skill : MonoBehaviour
         StartCoroutine(Cooldown());
         PlayerStatsUpdate();
         attribute.timePassed = 0;
-
     }
 
     public virtual void ActivateSkill()
@@ -36,7 +35,6 @@ public abstract class Skill : MonoBehaviour
 
     void PlayerStatsUpdate()
     {
-        player.mana -= attribute.manaCost;
+        player.SpendMana(attribute.manaCost);
     }
-
 }

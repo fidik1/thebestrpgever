@@ -25,6 +25,6 @@ public class Dash : Skill
     {
         player.speed *= 2;
         yield return new WaitForSeconds(0.5f);
-        player.GetComponent<PlayerController>().speed /= 2;
+        player.speed /= 2;
     }
 }

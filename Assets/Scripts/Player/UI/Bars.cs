@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Bars : MonoBehaviour
 {
-    [SerializeField] Player player;
+    [SerializeField] Stats stats;
 
     [SerializeField] Text textXp;
     [SerializeField] Text textHealth;
@@ -24,22 +24,22 @@ public class Bars : MonoBehaviour
 
     public void UpdateHealthBar()
     {
-        textHealth.text = player.hp.ToString() + " / " + player.maxHp.ToString();
-        healthBar.maxValue = player.maxHp;
-        healthBar.value = player.hp;
+        textHealth.text = stats.hp.ToString() + " / " + stats.maxHp.ToString();
+        healthBar.maxValue = stats.maxHp;
+        healthBar.value = stats.hp;
     }
 
     public void UpdateManaBar()
     {
-        textMana.text = player.mana.ToString() + " / " + player.maxMana.ToString();
-        manaBar.maxValue = player.maxMana;
-        manaBar.value = player.mana;
+        textMana.text = stats.mana.ToString() + " / " + stats.maxMana.ToString();
+        manaBar.maxValue = stats.maxMana;
+        manaBar.value = stats.mana;
     }
 
     public void UpdateXpBar()
     {
-        textXp.text = player.lvl.ToString() + " LEVEL";
-        xpBar.maxValue = player.targetXp;
-        xpBar.value = player.xp;
+        textXp.text = stats.lvl.ToString() + " LEVEL";
+        xpBar.maxValue = stats.targetXp;
+        xpBar.value = stats.xp;
     }
 }

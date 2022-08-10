@@ -21,7 +21,7 @@ public class FrostBall : Skill
         if (cast)
         {
             var temp = Instantiate(skillPrefab, player.transform.position, player.transform.rotation);
-            temp.GetComponent<Rigidbody2D>().AddForce(player.transform.up * 10f, ForceMode2D.Impulse);
+            temp.GetComponent<Rigidbody>().AddForce(player.transform.up * 10f, ForceMode.Impulse);
             Destroy(temp, 10);
             cast = false;
         }

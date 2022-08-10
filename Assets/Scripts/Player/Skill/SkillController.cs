@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillController : MonoBehaviour
 {
-    public Player player;
+    [SerializeField] Stats stats;
     public List<Skill> skills;
     [SerializeField] int skillID = 0;
 
@@ -46,7 +46,7 @@ public class SkillController : MonoBehaviour
 
     void Activate()
     {
-        if (!skills[skillID].attribute.onCooldown && player.mana >= skills[skillID].attribute.manaCost)
+        if (!skills[skillID].attribute.onCooldown && stats.mana >= skills[skillID].attribute.manaCost)
         {
             skills[skillID].Activate();
             skillHud.SetSliderValue(skillID);

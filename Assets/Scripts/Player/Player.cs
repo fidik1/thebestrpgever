@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Stats
+public class Player : MonoBehaviour
 {
     [SerializeField] GameObject canvas;
 
     [SerializeField] Rigidbody rb;
+    [SerializeField] Stats stats;
 
     void Update()
     {
-        if (!isAlive)
+        if (!stats.isAlive)
             return;
-        CheckDeath();
         JumpLogic();
-        
     }
 
     void FixedUpdate()
@@ -27,31 +26,18 @@ public class Player : Stats
         var horizontal = Input.GetAxisRaw("Horizontal");
         var vertical = Input.GetAxisRaw("Vertical");
         Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
-        transform.Translate(movement * speed * Time.fixedDeltaTime);
+        transform.Translate(movement * stats.speed * Time.fixedDeltaTime);
     }
 
     void JumpLogic()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            if (isGrounded)
+            if (stats.isGrounded)
             {
-                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * stats.jumpForce, ForceMode.Impulse);
             }
         }
-    }
-
-    void CheckDeath()
-    {
-        if (hp <= 0)
-            Death();
-    }
-
-    void Death()
-    {
-        hp = 0;
-        isAlive = false;
-        print("death");
     }
 
     void OnCollisionEnter(Collision collision)
@@ -68,7 +54,7 @@ public class Player : Stats
     {
         if (collision.gameObject.tag == ("Ground"))
         {
-            isGrounded = value;
+            stats.isGrounded = value;
         }
     }
 }

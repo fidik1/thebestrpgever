@@ -6,7 +6,8 @@ public abstract class Skill : MonoBehaviour
 {
     public virtual AttributeSkill attribute { get; set; }
     public Player player;
-    public Vector3 rayStartPos = new Vector3(Screen.width/2, Screen.height/2, 0);
+    public Stats stats;
+    public Vector3 rayStartPos = new Vector3(Screen.width / 2, Screen.height / 2, 0);
 
     void Start()
     {
@@ -35,6 +36,6 @@ public abstract class Skill : MonoBehaviour
 
     void PlayerStatsUpdate()
     {
-        player.SpendMana(attribute.manaCost);
+        stats.SpendMana(attribute.manaCost);
     }
 }

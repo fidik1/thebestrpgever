@@ -2015,7 +2015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e10742223df96478cc52770a2a0db5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 1768680197}
+  stats: {fileID: 1768680203}
   textXp: {fileID: 1092476558}
   textHealth: {fileID: 27373424}
   textMana: {fileID: 1063058425}
@@ -2514,6 +2514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1768680197}
+  stats: {fileID: 1768680203}
   rayStartPos: {x: 960, y: 540, z: 0}
   attributeSkill: {fileID: 11400000, guid: cc544dda8fd6a9744a3dda39dcc01f2a, type: 2}
 --- !u!114 &1038660369
@@ -2529,6 +2530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1768680197}
+  stats: {fileID: 1768680203}
   rayStartPos: {x: 960, y: 540, z: 0}
   attributeSkill: {fileID: 11400000, guid: 54c60a5b2e3241642a2ed680361c06af, type: 2}
 --- !u!114 &1038660370
@@ -2544,8 +2546,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1768680197}
+  stats: {fileID: 1768680203}
   rayStartPos: {x: 960, y: 540, z: 0}
-  skillPrefab: {fileID: 5128302226674881234, guid: f6f08ed91ce9a074db37f6977b558867, type: 3}
+  skillPrefab: {fileID: 1845415967665154273, guid: a3c3fcec058346f4db0d16cc2379ba53, type: 3}
   attributeSkill: {fileID: 11400000, guid: 99702ada096993e478108b837ffd89a7, type: 2}
 --- !u!114 &1038660371
 MonoBehaviour:
@@ -2560,6 +2563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1768680197}
+  stats: {fileID: 1768680203}
   rayStartPos: {x: 960, y: 540, z: 0}
   attributeSkill: {fileID: 11400000, guid: 2e35625be3723234bbdf0c4e21164cf2, type: 2}
 --- !u!114 &1038660372
@@ -2575,8 +2579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1768680197}
+  stats: {fileID: 1768680203}
   rayStartPos: {x: 960, y: 540, z: 0}
-  skillPrefab: {fileID: 5128302226674881234, guid: a81cfe82837635b489e22a2a1919fba1, type: 3}
+  skillPrefab: {fileID: 1845415967665154273, guid: 4c5c2c24dfbc5124097adc5ca17995ba, type: 3}
   attributeSkill: {fileID: 11400000, guid: 16c02199bf54d0c4785eba6f6a8f6de1, type: 2}
 --- !u!114 &1038660373
 MonoBehaviour:
@@ -2591,6 +2596,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1768680197}
+  stats: {fileID: 1768680203}
   rayStartPos: {x: 960, y: 540, z: 0}
   skillPrefab: {fileID: 1845415967665154273, guid: a3c3fcec058346f4db0d16cc2379ba53, type: 3}
   attributeSkill: {fileID: 11400000, guid: effc9113c1a893d498d9f6705deaf291, type: 2}
@@ -2606,7 +2612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3baee198991234599157a6b3d38337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1768680197}
+  stats: {fileID: 1768680203}
   skills:
   - {fileID: 1038660373}
   - {fileID: 1038660372}
@@ -4038,6 +4044,7 @@ GameObject:
   - component: {fileID: 1768680199}
   - component: {fileID: 1768680198}
   - component: {fileID: 1768680197}
+  - component: {fileID: 1768680203}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4059,8 +4066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 797992016}
   rb: {fileID: 1768680198}
-  isAlive: 1
-  isGrounded: 0
+  stats: {fileID: 1768680203}
 --- !u!54 &1768680198
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4153,6 +4159,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1768680203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768680196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2b3d6c9687fd3f4f8309e9ad448fac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlive: 1
+  isGrounded: 0
 --- !u!1 &1885869714
 GameObject:
   m_ObjectHideFlags: 0
@@ -4525,7 +4545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2138813540}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

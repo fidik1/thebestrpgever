@@ -23,8 +23,8 @@ public class Dash : Skill
     
     IEnumerator DoDash()
     {
-        player.speed *= 2;
+        stats.ChangeSpeed(stats.speed * 2);
         yield return new WaitForSeconds(0.5f);
-        player.speed /= 2;
+        stats.ChangeSpeed(stats.speed / 2);
     }
 }

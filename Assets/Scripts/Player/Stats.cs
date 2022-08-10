@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
-    public float maxHp { get; set; } 
-    public float hp { get; set; } 
-    public float maxMana { get; set; }
-    public float mana { get; set; }
-    public float lvl { get; set; } 
-    public float targetXp { get; set; } 
-    public float xp { get; set; } 
-    public float dmg { get; set; } 
-    public float attackSpeed { get; set; } 
-    public float speed { get; set; } 
-    public float jumpForce { get; set; }
+    public float maxHp { get; private set; } 
+    public float hp { get; private set; } 
+    public float maxMana { get; private set; }
+    public float mana { get; private set; }
+    public float lvl { get; private set; } 
+    public float targetXp { get; private set; } 
+    public float xp { get; private set; } 
+    public float dmg { get; private set; } 
+    public float attackSpeed { get; private set; } 
+    public float speed { get; private set; } 
+    public float jumpForce { get; private set; }
     public bool isAlive = true;
     public bool isGrounded;
-    public float regenHp { get; set; }
-    public float regenMana { get; set; }
+    public float regenHp { get; private set; }
+    public float regenMana { get; private set; }
 
     public delegate void PlayerEvent();
     public static event PlayerEvent ChangedHP;
@@ -83,6 +83,24 @@ public class Stats : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        ChangedHP += CheckDeath;
+    }
+
+    void CheckDeath()
+    {
+        if (hp <= 0)
+            Death();
+    }
+
+    void Death()
+    {
+        hp = 0;
+        isAlive = false;
+        print("death");
+    }
+
     public void SpendHP(float HP)
     {
         this.hp -= HP;
@@ -93,5 +111,10 @@ public class Stats : MonoBehaviour
     {
         this.mana -= mana;
         ChangedMana?.Invoke();
-    }    
+    }
+
+    public void ChangeSpeed(float movementSpeed)
+    {
+        this.speed = movementSpeed;
+    }
 }

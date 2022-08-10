@@ -24,6 +24,7 @@ public class FireBall : Skill
             RaycastHit hit;
             Physics.Raycast(ray, out hit);
             GameObject temp = Instantiate(skillPrefab, player.transform.position, player.transform.rotation);
+            //temp.GetComponent<Rigidbody>().AddForce(Vector3.forward * 10f);
             StartCoroutine(MoveBall(temp, hit));
             Destroy(temp, 10);
             cast = false;

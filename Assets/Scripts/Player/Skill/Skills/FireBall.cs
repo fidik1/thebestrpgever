@@ -20,19 +20,21 @@ public class FireBall : Skill
     {
         if (cast)
         {
-            Ray ray = Camera.main.ScreenPointToRay(rayStartPos);
-            RaycastHit hit;
-            Physics.Raycast(ray, out hit);
-            GameObject temp = Instantiate(skillPrefab, player.transform.position, player.transform.rotation);
-            //temp.GetComponent<Rigidbody>().AddForce(Vector3.forward * 10f);
-            StartCoroutine(MoveBall(temp, hit));
-            Destroy(temp, 10);
+            StartCoroutine(MoveBall());
             cast = false;
         }
     }
 
-    IEnumerator MoveBall(GameObject temp, RaycastHit hit)
+    IEnumerator MoveBall()
     {
+        yield return new WaitForSeconds(0.3f);
+        
+        Ray ray = Camera.main.ScreenPointToRay(rayStartPos);
+        RaycastHit hit;
+        Physics.Raycast(ray, out hit);
+        GameObject temp = Instantiate(skillPrefab, firePoint.transform.position, firePoint.transform.rotation);
+        Destroy(temp, 10);
+
         while (temp.transform.position != hit.point || !temp)
         {
             temp.transform.position = Vector3.MoveTowards(temp.transform.position, hit.point, 1f);

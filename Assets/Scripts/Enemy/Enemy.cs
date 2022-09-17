@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stats : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
-    public float maxHp { get; private set; } 
-    public float hp { get; private set; } 
-    public float maxMana { get; private set; }
-    public float mana { get; private set; }
-    public float lvl { get; private set; } 
-    public float targetXp { get; private set; } 
-    public float xp { get; private set; } 
-    public float dmg { get; private set; } 
-    public float attackSpeed { get; private set; } 
-    public float speed { get; private set; } 
-    public float jumpForce { get; private set; }
+    public float maxHp { get; protected set; } 
+    public float hp { get; protected set; } 
+    public float maxMana { get; protected set; }
+    public float mana { get; protected set; }
+    public float lvl { get; protected set; } 
+    public float targetXp { get; protected set; } 
+    public float xp { get; protected set; } 
+    public float dmg { get; protected set; } 
+    public float attackSpeed { get; protected set; } 
+    public float speed { get; protected set; } 
+    public float jumpForce { get; protected set; }
     public bool isAlive = true;
     public bool isGrounded;
-    public float regenHp { get; private set; }
-    public float regenMana { get; private set; }
+    public float regenHp { get; protected set; }
+    public float regenMana { get; protected set; }
 
     public delegate void PlayerEvent();
     public static event PlayerEvent ChangedHP;
@@ -29,6 +29,8 @@ public class Stats : MonoBehaviour
     {   
         InitStats();
         StartCoroutine(RegenStats());
+        ChangedHP += CheckDeath;
+        ChangedXP += CheckLvlUp;
     }
 
     void InitStats()
@@ -49,24 +51,6 @@ public class Stats : MonoBehaviour
         regenMana = 1;
     }
 
-    public void CheckLvlUp()
-    {
-        if (xp >= targetXp)
-        {
-            StatsUp();
-            hp = maxHp;
-        }
-    }
-
-    void StatsUp()
-    {
-        xp -= targetXp;
-        lvl += 1;
-        maxHp = Mathf.Round(maxHp * 1.1f);
-        targetXp *= 2f;
-        attackSpeed += 1;
-    }
-
     IEnumerator RegenStats()
     {
         while (isAlive)
@@ -83,9 +67,22 @@ public class Stats : MonoBehaviour
         }
     }
 
-    void Start()
+    public void CheckLvlUp()
     {
-        ChangedHP += CheckDeath;
+        if (xp >= targetXp)
+        {
+            StatsUp();
+            hp = maxHp;
+        }
+    }
+
+    void StatsUp()
+    {
+        xp -= targetXp;
+        lvl += 1;
+        maxHp = Mathf.Round(maxHp * 1.1f);
+        targetXp *= 2f;
+        attackSpeed += 1;
     }
 
     void CheckDeath()
@@ -116,5 +113,17 @@ public class Stats : MonoBehaviour
     public void ChangeSpeed(float movementSpeed)
     {
         this.speed = movementSpeed;
+    }
+
+    public void ChangeXP(float xp)
+    {
+        this.xp += xp;
+        ChangedXP?.Invoke();
+    }
+
+    void OnDestroy()
+    {
+        ChangedHP -= CheckDeath;
+        ChangedXP -= CheckLvlUp;
     }
 }

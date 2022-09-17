@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Bars : MonoBehaviour
 {
-    [SerializeField] Stats stats;
+    [SerializeField] Player player;
 
     [SerializeField] Text textXp;
     [SerializeField] Text textHealth;
@@ -17,29 +17,30 @@ public class Bars : MonoBehaviour
 
     void Start()
     {
-        Stats.ChangedHP += UpdateHealthBar;
-        Stats.ChangedMana += UpdateManaBar;
-        Stats.ChangedXP += UpdateXpBar;
+        Player.ChangedHP += UpdateHealthBar;
+        Player.ChangedMana += UpdateManaBar;
+        Player.ChangedXP += UpdateXpBar;
+        UpdateXpBar();
     }
 
     public void UpdateHealthBar()
     {
-        textHealth.text = stats.hp.ToString() + " / " + stats.maxHp.ToString();
-        healthBar.maxValue = stats.maxHp;
-        healthBar.value = stats.hp;
+        textHealth.text = player.hp.ToString() + " / " + player.maxHp.ToString();
+        healthBar.maxValue = player.maxHp;
+        healthBar.value = player.hp;
     }
 
     public void UpdateManaBar()
     {
-        textMana.text = stats.mana.ToString() + " / " + stats.maxMana.ToString();
-        manaBar.maxValue = stats.maxMana;
-        manaBar.value = stats.mana;
+        textMana.text = player.mana.ToString() + " / " + player.maxMana.ToString();
+        manaBar.maxValue = player.maxMana;
+        manaBar.value = player.mana;
     }
 
     public void UpdateXpBar()
     {
-        textXp.text = stats.lvl.ToString() + " LEVEL";
-        xpBar.maxValue = stats.targetXp;
-        xpBar.value = stats.xp;
+        textXp.text = player.lvl.ToString() + " LEVEL";
+        xpBar.maxValue = player.targetXp;
+        xpBar.value = player.xp;
     }
 }

@@ -18,7 +18,7 @@ public class Heal : Skill
     {
         if (cast)
         {
-            stats.SpendHP(-attribute.heal);
+            player.SpendHP(-attribute.heal);
             cast = false;
         }
     }
